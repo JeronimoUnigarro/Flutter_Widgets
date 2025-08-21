@@ -24,10 +24,10 @@ class MyApp extends StatelessWidget {
             backgroundColor: Colors.teal,
             foregroundColor: Colors.white,
             shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(12),
+              borderRadius: BorderRadius.all(Radius.circular(12)),
             ),
-            padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
-            textStyle: const TextStyle(fontSize: 16),
+            padding: EdgeInsets.symmetric(horizontal: 24, vertical: 12),
+            textStyle: TextStyle(fontSize: 16),
           ),
         ),
       ),
@@ -52,6 +52,8 @@ class MenuScreen extends StatelessWidget {
             _menuButton(context, "Contador", const ExampleCounterScreen()),
             const SizedBox(height: 16),
             _menuButton(context, "Lista dinámica", const ExampleListScreen()),
+            const SizedBox(height: 16),
+            _menuButton(context, "Biografía del creador", const BiographyScreen()),
           ],
         ),
       ),
@@ -193,6 +195,37 @@ class _ExampleListScreenState extends State<ExampleListScreen> {
         backgroundColor: Colors.teal,
         onPressed: _addItem,
         child: const Icon(Icons.add),
+      ),
+    );
+  }
+}
+
+class BiographyScreen extends StatelessWidget {
+  const BiographyScreen({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: const Text("Biografía del creador")),
+      body: Padding(
+        padding: const EdgeInsets.all(24),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: const [
+            Icon(Icons.person, size: 80, color: Colors.teal),
+            SizedBox(height: 20),
+            Text(
+              "Jerónimo Unigarro",
+              style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold, color: Colors.teal),
+            ),
+            SizedBox(height: 12),
+            Text(
+              "Estudiante de Ingeniería de Software apasionado por el desarrollo móvil y la creación de aplicaciones innovadoras con Flutter. Siempre en busca de aprender, mejorar y aportar con creatividad en cada proyecto.",
+              textAlign: TextAlign.center,
+              style: TextStyle(fontSize: 16, height: 1.5),
+            ),
+          ],
+        ),
       ),
     );
   }
